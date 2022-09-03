@@ -1,14 +1,14 @@
+from contextlib import nullcontext
 from mailbox import NotEmptyError
 from django.db import models
+from django.contrib.auth.models import User, AbstractBaseUser
 
 # Create your models here.
 
-class Usuario(models.Model):
-    nome = models.CharField(max_length=200)
-    email = models.CharField(max_length=100)
-    senha = models.CharField(max_length=200)
-        
-      
+class Usuario(AbstractBaseUser):
+    login = models.CharField(max_length=40, unique=True)
+    USERNAME_FIELD = 'login'
+
     
     """def __init__(self,nome,email,senha):
         self.nome=nome

@@ -1,5 +1,6 @@
 from django.http import HttpRequest,HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 from .models import Usuario
 
@@ -10,11 +11,13 @@ def index(request):
     return render(request, 'reclame/cadusuario.html')
 
 def cadUsuario(request):
-    usuario = Usuario()
-    usuario.nome = request.POST['nome']
-    usuario.email = request.POST['email']
-    usuario.senha = request.POST['senha']
+    u = User(username=request.POST['nome'])
+    u.is_staff=True
+    u.usuario = Usuario()
+    u.usuario.email = request.POST['email']
+    u.email = request.POST['email']
+    u.password = request.POST['senha']
     
-    usuario.save()
+    u.save()
     
     return render(request,'reclame/cadusuario.html')
