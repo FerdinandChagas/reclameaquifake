@@ -6,8 +6,10 @@ from django.contrib.auth.models import User, AbstractBaseUser
 # Create your models here.
 
 class Usuario(AbstractBaseUser):
-    login = models.CharField(max_length=40, unique=True)
+    login = models.CharField(max_length=40, unique=True, default=None)
+    password = models.CharField(max_length=40, default=None)
     USERNAME_FIELD = 'login'
+    PASSWORD_FIELD = 'password'
 
     
     """def __init__(self,nome,email,senha):

@@ -11,12 +11,10 @@ def index(request):
     return render(request, 'reclame/cadusuario.html')
 
 def cadUsuario(request):
-    u = User(username=request.POST['nome'])
-    u.is_staff=True
-    u.usuario = Usuario()
-    u.usuario.email = request.POST['email']
-    u.email = request.POST['email']
-    u.password = request.POST['senha']
+    u = User.objects.create_user(request.POST['login'],request.POST['email'], request.POST['password'])
+    u.set_password = request.POST['password']
+    u.first_name = request.POST['first_name']
+    
     
     u.save()
     
