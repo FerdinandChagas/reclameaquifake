@@ -1,7 +1,7 @@
 <html>
     <body>
         Formulário Cadastro Usuário
-        <form action="{% url 'reclame:cad' %}" method="post">
+        <form action="{% url 'reclame:cad_user' %}" method="post">
             {% csrf_token %}
             <fieldset>
             Nome <input type="text" name="first_name" id="first_name"><br>

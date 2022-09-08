@@ -1,5 +1,10 @@
 <html>
     <body>
-        Seja bem-vindo {% user.first_name %}!
+        {% if user %}
+            Seja bem-vindo {{ user.first_name }}!
+        {% endif %}
+        ...
+        <br>
+        <a href="{% url 'reclame:logout' %}">logout</a>
     </body>
 </html>
